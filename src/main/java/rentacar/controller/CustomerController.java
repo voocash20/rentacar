@@ -24,8 +24,7 @@ public class CustomerController {
 		c.setName(name);
 		c.setPhone(phone);
 		customerRepo.save(c);
-		String odp = "Dodano";
-		return odp;
+		return "New customer added";
 	}
 	
 	@GetMapping(path="/all")
