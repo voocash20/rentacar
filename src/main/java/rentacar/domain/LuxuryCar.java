@@ -1,9 +1,14 @@
 package rentacar.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class LuxuryCar {
@@ -11,10 +16,15 @@ public class LuxuryCar {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotNull
+	@Size(max=20)
+	@Column(length=20)
 	private String brand;
+	private Long year;
 	private String model;
+	@Column(length=25)
 	private String type;
+	@Range(min=1,max=999999)
 	private int mileage;
 	private int numberOfSeats;
 	private int numberOfDoors;
@@ -81,6 +91,12 @@ public class LuxuryCar {
 	}
 	public void setHasAutomaticTransmission(boolean hasAutomaticTransmission) {
 		this.hasAutomaticTransmission = hasAutomaticTransmission;
+	}
+	public Long getYear() {
+		return year;
+	}
+	public void setYear(Long year) {
+		this.year = year;
 	}
 	
 	
